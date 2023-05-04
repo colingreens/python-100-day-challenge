@@ -1,9 +1,9 @@
 print("Welcome to Treasure Island. Your mission is to find the treasure")
-first_choice = input("Left or Right ")
+first_choice = input("Left or Right ").lower()
 
 if first_choice == "right":
     print("Good")
-    second_choice = input("Swim or Walk ")
+    second_choice = input("Swim or Walk ").lower()
     if second_choice == "swim":
         print("good")
         door = int(input("Which door 1 2 or 3? "))
