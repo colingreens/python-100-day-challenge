@@ -1,9 +1,34 @@
-from turtle import Turtle, Screen
+from menu import Menu, MenuItem
+from coffee_maker import CoffeeMaker
+from money_machine import MoneyMachine
 
-tyler = Turtle()
-tyler.shape("turtle")
-tyler.color('green')
+menu = Menu()
+coffeeMaker = CoffeeMaker()
+moneyMachine =  MoneyMachine()
 
-my_screen = Screen()
+isOn = True
 
-my_screen.exitonclick()
+while isOn == True:
+    selection = input(f"What would you like {menu.get_items()}").lower()
+
+    if selection == "off":
+        isOn = False
+        continue
+
+    if selection == "report":
+        coffeeMaker.report()
+        moneyMachine.report()
+        continue
+
+    order = menu.find_drink(selection)
+
+    if order != None:
+        if coffeeMaker.is_resource_sufficient(order):
+            if moneyMachine.make_payment(order.cost):
+                coffeeMaker.make_coffee(order)
+
+
+    
+
+    
+
